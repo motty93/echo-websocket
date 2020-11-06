@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS `echo-dev`;
-USE `echo-dev`;
+CREATE DATABASE IF NOT EXISTS `echo-websocket-dev`;
+USE `echo-websocket-dev`;
 
 DROP TABLE IF EXISTS `tests`;
 CREATE TABLE `tests` (

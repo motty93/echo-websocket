@@ -5,12 +5,10 @@ services:
     build:
       context: ./src/build/docker/mysql
       dockerfile: ./Dockerfile
-    image: echo-db-image
-    container_name: echo-db-container
     ports:
       - '3336:3306'
     volumes:
-      - echo-mysql-data:/var/lib/mysql
+      - echo-websocket-mysql-data:/var/lib/mysql
       - ./src/build/docker/mysql/charset.cnf:/etc/mysql/conf.d/charset.cnf
       - ./src/build/docker/mysql/initdb.d:/docker-entrypoint-initdb.d
     environment:
@@ -23,8 +21,6 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-    image: echo-api-image
-    container_name: echo-api-container
     ports:
       - '8020:8020'
     volumes:
@@ -39,8 +35,6 @@ services:
     build:
       context: ./src/build/docker/nginx
       dockerfile: ./Dockerfile
-    image: echo-proxy-image
-    container_name: echo-proxy-container
     ports:
       - '80:80'
     volumes:
@@ -49,4 +43,4 @@ services:
       - api
 
 volumes:
-  echo-mysql-data:
+  echo-websocket-mysql-data:
