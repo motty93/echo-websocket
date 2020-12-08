@@ -22,6 +22,7 @@ func Router() *echo.Echo {
 
 	e.GET("/", handler.RootHandler)
 	e.GET("/test", handler.TestHandler)
+	e.GET("/ws", handler.Websocket)
 
 	// us := service.NewServiceUser(db.DB)
 	// uh := handler.NewUserHandler(us)
