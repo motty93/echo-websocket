@@ -18,6 +18,10 @@ func Router() *echo.Echo {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 	e.Use(middleware.BodyDump(handler.BodyDumper))
+	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		AllowOrigins: []string{"localhost:8000"},
+		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
+	}))
 	e.Validator = &validation.Custom{Validator: validator.New()}
 
 	e.GET("/", handler.RootHandler)
